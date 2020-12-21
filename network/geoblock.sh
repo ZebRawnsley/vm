@@ -7,7 +7,7 @@ true
 SCRIPT_NAME="GeoBlock"
 SCRIPT_EXPLAINER="This script lets you restrict access to your server, only allowing the countries you choose."
 # shellcheck source=lib.sh
-source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/ZebRawnsley/vm/master/lib.sh)
 
 # Check for errors + debug code and abort if something isn't right
 # 1 = ON

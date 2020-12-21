@@ -2,7 +2,7 @@
 true
 SCRIPT_NAME="Activate TLS"
 # shellcheck source=lib.sh
-source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/ZebRawnsley/vm/master/lib.sh)
 
 # T&M Hansson IT AB © - 2020, https://www.hanssonit.se/
 
@@ -71,7 +71,7 @@ fi
 
 # Curl the lib another time to get the correct https_conf
 # shellcheck source=lib.sh
-source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/nextcloud/vm/master/lib.sh)
+source /var/scripts/fetch_lib.sh || source <(curl -sL https://raw.githubusercontent.com/ZebRawnsley/vm/master/lib.sh)
 
 # Check if $TLSDOMAIN exists and is reachable
 echo
