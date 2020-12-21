@@ -26,57 +26,8 @@ umount /mnt/* &> /dev/null
 # mkdir if not existing
 mkdir -p "$MOUNT_"
 
-# Check what Hypervisor disks are available
-if [ "$SYSVENDOR" == "VMware, Inc." ];
-then
-    SYSNAME="VMware"
-    DEVTYPE=sdb
-elif [ "$SYSVENDOR" == "Microsoft Corporation" ];
-then
-    SYSNAME="Hyper-V"
-    DEVTYPE=sdb
-elif [ "$SYSVENDOR" == "innotek GmbH" ];
-then
-    SYSNAME="VirtualBox"
-    DEVTYPE=sdb
-elif [ "$SYSVENDOR" == "Xen" ];
-then
-    SYSNAME="Xen/XCP-NG"
-    DEVTYPE=xvdb
-elif [[ "$SYSVENDOR" == "QEMU" || "$SYSVENDOR" == "Red Hat" ]];
-then
-    SYSNAME="KVM/QEMU"
-    DEVTYPE=vdb
-elif [ "$SYSVENDOR" == "DigitalOcean" ];
-then
-    SYSNAME="DigitalOcean"
-    DEVTYPE=sda
-elif [ "$SYSVENDOR" == "Intel(R) Client Systems" ];
-then
-    SYSNAME="Intel-NUC"
-    DEVTYPE=sda
-elif [ "$SYSVENDOR" == "UpCloud" ];
-then
-    if lsblk -e7 -e11 | grep -q sd
-    then
-        SYSNAME="UpCloud ISCSI/IDE"
-        DEVTYPE=sdb
-    elif lsblk -e7 -e11 | grep -q vd
-    then
-        SYSNAME="UpCloud VirtiO"
-        DEVTYPE=vdb
-    fi
-elif partprobe /dev/sdb &>/dev/null;
-then
-    SYSNAME="machines"
-    DEVTYPE=sdb
-else
-    msg_box "It seems like you didn't add a second disk. 
-To be able to put the DATA on a second drive formatted as ZFS you need to add a second disk to this server.
-
-This script will now exit. Please add a second disk and start over."
-    exit 1
-fi
+SYSNAME="aws"
+    DEVTYPE=nvme1
 
 msg_box "You will now see a list with available devices. Choose the device where you want to put your Nextcloud data.
 Attention, the selected device will be formatted!"
